@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>@ViewBag.Title</title>
+  @RenderSection("styles", false)
+</head>
+<body style="margin: 0; padding: 0;" bgcolor="#ffffff" link="#af332a">
+  <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+    <tr>
+      <!-- Wrapper for outer margin -->
+      <td class="wrap-cell" style="padding: 25px">
+        <table class="flex" width="750" align="center" cellspacing="0" cellpadding="0">
+          <tr>
+            <!-- Wrapper for internal padding -->
+            <td class="main-cell" style="padding: 30px; border: 1px solid #cccccc;">
+              <table width="100%" cellspacing="0" cellpadding="0">
+                <!-- Header -->
+                <tr>
+                  <td>
+                    <table class="clear" align="left" cellspacing="0" cellpadding="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                      <tr>
+                        <td style="padding: 0 0 20px;">
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <!-- Main Title -->
+                <tr>
+                  <td bgcolor="#f3f3f3" style="padding: 5px; font: 14px Arial, Helvetica, sans-serif;">
+                    <strong>@RenderSection("header1")</strong>
+                  </td>
+                </tr>
+                <!-- Main Content -->
+                <tr>
+                  <td style="font: 12px/1.75 Arial, Helvetica, sans-serif; color: #666666;">
+                    @RenderSection("description")
+                  </td>
+                </tr>
+
+                @RenderSection("content")
+              </table>
+            </td>
+          </tr>
+          <!-- Footer -->
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,31 @@
+@model Portal.EmailTemplates.ViewModels.CustomViewModel
+@{
+	ViewBag.Title = "ViewBag.Title";
+	var url = ViewBag.WebSiteUrl;
+}
+
+@section header1{
+	"header1"
+}
+
+@section description
+{
+	<br />
+	<font face="Arial, Helvetica, sans-serif" size="2" color="#666666" style="font-size: 12px; line-height: 20px;">
+		<p>Description</p>
+	</font>
+
+	<a href="@url" style="display: block;">
+		Confirm Email"
+	</a>
+	<font face="Arial, Helvetica, sans-serif" size="2" color="#666666" style="font-size: 10px; line-height: 14px; word-break: break-word;">
+		<br />
+		<p style="margin: 0;">Common_DontSeeAButton_Helper</p>
+		<p style="margin: 0;">
+			<a href="@url">ConfirmationUrl</a>
+		</p>
+	</font>
+}
+
+@section content{
+}

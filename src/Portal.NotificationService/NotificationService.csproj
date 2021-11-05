@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker" DefaultTargets="Build">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Portal.NotificationService</AssemblyName>
+    <Copyright>Copyright © Victor 2021</Copyright>
+    <Authors>Victor</Authors>
+    <Company>Victor</Company>
+    <Version Condition="$(Version) == '' Or $(Version) == '*Undefined*'">1.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="5.0.1" />
+    <PackageReference Include="Quartz" Version="3.3.3" />
+    <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.3.3" />
+    <PackageReference Include="Quartz.Extensions.Hosting" Version="3.3.3" />
+    <PackageReference Include="Razor.Templating.Core" Version="1.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Portal.EmailTemplates\Portal.EmailTemplates.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Logs\dnd.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PrepareNuget" AfterTargets="Publish" DependsOnTargets="Rebuild; Publish" Condition=" '$(Configuration)' == 'Release' ">
+    <Message Text="Generating NuGet package" />
+    <MSBuild Projects="NuGet\NuGet.msbuild" Properties="Configuration=$(Configuration);ProjectName=$(ProjectName);ExeName=$(AssemblyName);OutputPath=$(OutputPath)publish\" />
+  </Target>
+
+</Project>
